@@ -24,7 +24,7 @@ import org.firstinspires.ftc.teamcode.mechanisms.Turret;
 public class Robot{
     private static final Robot inst = new Robot();
 
-    public static int TARGET_TAG = 20;
+    public static int TARGET_TAG = 36;
     public static double SHOOTER_READY_VELOCITY = 1100;
     public static double LATCH_OPEN = 0.1;
     public static double LATCH_CLOSED = 0;
@@ -92,7 +92,7 @@ public class Robot{
             mecanumTeleop = new MecanumTeleop();
             mecanumTeleop.Init(hardwareMap);
         }
-        TARGET_TAG = (alliance == Alliance.RED) ? 24 : 20;
+        TARGET_TAG = (alliance == Alliance.RED) ? 36 : 38;
 
         latch.setPosition(0);
 //        vision.startDashboardStream(15); // TODO disable for comp
