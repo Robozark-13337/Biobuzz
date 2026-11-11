@@ -33,7 +33,15 @@ public class driveforward extends LinearOpMode {
         leftBack.setPower(-0.5);
         rightBack.setPower(-0.5);
 
-        sleep(2000); // 2 seconds
+        sleep(2000); // 2
+
+        // Drive backward
+        leftFront.setPower(0.5);
+        rightFront.setPower(0.5);
+        leftBack.setPower(0.5);
+        rightBack.setPower(0.5);
+
+        sleep(2000); // 2
 
         // Stop motors
         leftFront.setPower(0);
