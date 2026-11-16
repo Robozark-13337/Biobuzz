@@ -11,6 +11,10 @@ import com.noahbres.meepmeep.MeepMeep;
 import com.noahbres.meepmeep.core.colorscheme.scheme.ColorSchemeBlueDark;
 import com.noahbres.meepmeep.roadrunner.DefaultBotBuilder;
 import com.noahbres.meepmeep.roadrunner.entity.RoadRunnerBotEntity;
+import javax.imageio.ImageIO;
+import java.io.IOException;
+import java.util.Objects;
+
 
 
 import java.awt.Robot;
@@ -138,10 +142,18 @@ public class MeepMeepTesting {
 //                        .build()
 //        );
 
-        meepMeep.setBackground(MeepMeep.Background.FIELD_DECODE_OFFICIAL)
+        try {
+            meepMeep.setBackground(ImageIO.read(Objects.requireNonNull(
+                    MeepMeepTesting.class.getResourceAsStream("/BIOBUZZMAP.png")
+            )));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        meepMeep
                 .setDarkMode(true)
                 .setBackgroundAlpha(0.95f)
-                // Add both of our declared bot entities
+                // Add your bot entity and launch the window
                 .addEntity(myFirstBot)
                 .start();
     }
