@@ -1,12 +1,7 @@
 package com.robozark.meepmeeptesting;
 
-import com.acmerobotics.roadrunner.ParallelAction;
 import com.acmerobotics.roadrunner.Pose2d;
-import com.acmerobotics.roadrunner.Pose2dDual;
-import com.acmerobotics.roadrunner.PoseMap;
-import com.acmerobotics.roadrunner.SleepAction;
 import com.acmerobotics.roadrunner.Vector2d;
-import com.acmerobotics.roadrunner.VelConstraint;
 import com.noahbres.meepmeep.MeepMeep;
 import com.noahbres.meepmeep.core.colorscheme.scheme.ColorSchemeBlueDark;
 import com.noahbres.meepmeep.roadrunner.DefaultBotBuilder;
@@ -15,19 +10,15 @@ import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.util.Objects;
 
-
-
-import java.awt.Robot;
-
 public class MeepMeepTesting {
     public static void main(String[] args) {
         MeepMeep meepMeep = new MeepMeep(700);
 
-
         double GOAL_HEADING = Math.toRadians(135);
         final Vector2d GOAL = new Vector2d(-20, 22);
         final Pose2d GOAL_POSE = new Pose2d(GOAL, GOAL_HEADING);
-        final Vector2d PARK = new Vector2d(37, -33);
+        final Vector2d PARK_2 = new Vector2d(30, 60);
+        final Vector2d PARK_1 = new Vector2d(-34, 30);
         final Vector2d SPIKE_3 = new Vector2d(-12, 20);
         final Vector2d SPIKE_2 = new Vector2d(12, 20);
         final Vector2d SPIKE_1 = new Vector2d(36, 25);
@@ -35,7 +26,7 @@ public class MeepMeepTesting {
         final Vector2d SPIKE_2_FINAL = new Vector2d(12, 50);
         final Vector2d SPIKE_1_FINAL = new Vector2d(36, 50);
 //        final Pose2d START_POSE = new Pose2d(60, -12, Math.toRadians(180));
-        final Pose2d startPose = new Pose2d(-57, 43, Math.toRadians(125));
+        final Pose2d startPose = new Pose2d(-60, 10, Math.toRadians(0));
         final Pose2d START_POSE2 = new Pose2d(55, 10, Math.toRadians(180));
         double GOAL_HEADING2 = Math.toRadians(135);
         final Vector2d GOAL2 = new Vector2d(-35, 20);
@@ -55,52 +46,60 @@ public class MeepMeepTesting {
                 .setDimensions(18, 18) // width, height in inches
                 .build();
 
+//        // GOAL
+//        myFirstBot.runAction(
+//                myFirstBot.getDrive().actionBuilder(startPose)
+//                        // Preload score
+//                        .setTangent(Math.toRadians(315))
+//                        .splineToLinearHeading(GOAL_POSE, GOAL_HEADING)
+//                        .waitSeconds(2.5)
+//
+//                        //Go to Middle Balls
+//                        .setTangent(Math.toRadians(270))
+//                        .splineToLinearHeading(new Pose2d(SPIKE_2, Math.toRadians(90)), Math.toRadians(0))
+//
+//                        //Intake Middle Balls
+//                        .setTangent(Math.toRadians(90))
+//                        .splineToConstantHeading(SPIKE_2_FINAL, Math.toRadians(90))
+////
+//////              // Return to goal smoothly
+//                        .setTangent(Math.toRadians(270))
+//                        .splineToLinearHeading(GOAL_POSE, GOAL_HEADING)
+//                        .waitSeconds(2.5)
+//////
+//////              // Open gate
+//                        .setTangent(Math.toRadians(0))
+//                        .splineToLinearHeading(new Pose2d(Gate, Math.toRadians(114)), Math.toRadians(90))
+//                        .stopAndAdd(new ParallelAction(
+//                                new SleepAction(1.5)
+//                        ))
+////
+////                //Return to goal
+//                        .setTangent(Math.toRadians(270))
+//                        .splineToLinearHeading(GOAL_POSE, GOAL_HEADING)
+//                        .waitSeconds(2.5)
+////                // Open gate
+//                        .setTangent(Math.toRadians(0))
+//                        .splineToLinearHeading(new Pose2d(Gate, Math.toRadians(114)), Math.toRadians(90))
+//                        .stopAndAdd(new ParallelAction(
+//                                new SleepAction(1.5)
+//                        ))
+////
+////                //Return to goal
+//                        .setTangent(Math.toRadians(240))
+//                        .splineToLinearHeading(GOAL_POSE2, GOAL_HEADING)
+//                        .waitSeconds(2.5)
+//
+//                        .build()
+//    );
         // GOAL
         myFirstBot.runAction(
                 myFirstBot.getDrive().actionBuilder(startPose)
-                        // Preload score
-                        .setTangent(Math.toRadians(315))
-                        .splineToLinearHeading(GOAL_POSE, GOAL_HEADING)
-                        .waitSeconds(2.5)
-
-                        //Go to Middle Balls
-                        .setTangent(Math.toRadians(270))
-                        .splineToLinearHeading(new Pose2d(SPIKE_2, Math.toRadians(90)), Math.toRadians(0))
-
-                        //Intake Middle Balls
-                        .setTangent(Math.toRadians(90))
-                        .splineToConstantHeading(SPIKE_2_FINAL, Math.toRadians(90))
-//
-////              // Return to goal smoothly
-                        .setTangent(Math.toRadians(270))
-                        .splineToLinearHeading(GOAL_POSE, GOAL_HEADING)
-                        .waitSeconds(2.5)
-////
-////              // Open gate
-                        .setTangent(Math.toRadians(0))
-                        .splineToLinearHeading(new Pose2d(Gate, Math.toRadians(114)), Math.toRadians(90))
-                        .stopAndAdd(new ParallelAction(
-                                new SleepAction(1.5)
-                        ))
-//
-//                //Return to goal
-                        .setTangent(Math.toRadians(270))
-                        .splineToLinearHeading(GOAL_POSE, GOAL_HEADING)
-                        .waitSeconds(2.5)
-//                // Open gate
-                        .setTangent(Math.toRadians(0))
-                        .splineToLinearHeading(new Pose2d(Gate, Math.toRadians(114)), Math.toRadians(90))
-                        .stopAndAdd(new ParallelAction(
-                                new SleepAction(1.5)
-                        ))
-//
-//                //Return to goal
-                        .setTangent(Math.toRadians(240))
-                        .splineToLinearHeading(GOAL_POSE2, GOAL_HEADING)
-                        .waitSeconds(2.5)
-
+                        .waitSeconds(3)
+                        .splineTo(PARK_1, Math.toRadians(45))
+                        .splineTo(PARK_2, Math.toRadians(90))
                         .build()
-    );
+        );
 
 //        myFirstBot.runAction(
 //                myFirstBot.getDrive().actionBuilder(new Pose2d(60, 10, Math.toRadians(180)))

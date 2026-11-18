@@ -10,6 +10,7 @@ import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.vision.VisionPortal;
 import org.firstinspires.ftc.vision.apriltag.AprilTagDetection;
 import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
+import org.firstinspires.ftc.vision.apriltag.AprilTagSingleDetection;
 @Disabled
 @TeleOp(name = "VisionTest", group = "Concept")
 public class VisionTest extends LinearOpMode {
@@ -42,14 +43,15 @@ public class VisionTest extends LinearOpMode {
             if (!tagProcessor.getDetections().isEmpty()) {
                 AprilTagDetection tag = tagProcessor.getDetections().get(0);
 
-                if (tag.ftcPose != null) {
-                    telemetry.addData("x", tag.ftcPose.x);
-                    telemetry.addData("y", tag.ftcPose.y);
-                    telemetry.addData("z", tag.ftcPose.z);
-                    telemetry.addData("roll", tag.ftcPose.roll);
-                    telemetry.addData("pitch", tag.ftcPose.pitch);
-                    telemetry.addData("yaw", tag.ftcPose.yaw);
-                    telemetry.addData("Id", tag.id);
+                if (tag instanceof AprilTagSingleDetection && tag.ftcPose != null) {
+                    AprilTagSingleDetection singleTag = (AprilTagSingleDetection) tag;
+                    telemetry.addData("x", singleTag.ftcPose.x);
+                    telemetry.addData("y", singleTag.ftcPose.y);
+                    telemetry.addData("z", singleTag.ftcPose.z);
+                    telemetry.addData("roll", singleTag.ftcPose.roll);
+                    telemetry.addData("pitch", singleTag.ftcPose.pitch);
+                    telemetry.addData("yaw", singleTag.ftcPose.yaw);
+                    telemetry.addData("Id", singleTag.id);
                 } else {
                     telemetry.addLine("Tag detected, but pose not available");
                 }

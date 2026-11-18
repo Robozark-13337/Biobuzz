@@ -13,6 +13,7 @@ import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.vision.VisionPortal;
 import org.firstinspires.ftc.vision.apriltag.AprilTagDetection;
 import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
+import org.firstinspires.ftc.vision.apriltag.AprilTagSingleDetection;
 import org.firstinspires.ftc.vision.opencv.ColorBlobLocatorProcessor;
 import org.firstinspires.ftc.vision.opencv.ColorRange;
 import org.firstinspires.ftc.vision.opencv.ImageRegion;
@@ -173,11 +174,14 @@ public class VisionManager {
         }
 
         for (AprilTagDetection detection : detections) {
-            // Check if the detection ID matches the target ID
-            if (detection.id == targetTagId) {
-                // Ensure the tag has valid pose data (metadata must be present for pose)
-                if (detection.metadata != null && detection.ftcPose != null) {
-                    return detection;
+            if (detection instanceof AprilTagSingleDetection) {
+                AprilTagSingleDetection singleDetection = (AprilTagSingleDetection) detection;
+                // Check if the detection ID matches the target ID
+                if (singleDetection.id == targetTagId) {
+                    // Ensure the tag has valid pose data (metadata must be present for pose)
+                    if (singleDetection.metadata != null && singleDetection.ftcPose != null) {
+                        return singleDetection;
+                    }
                 }
             }
         }
