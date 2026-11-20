@@ -49,8 +49,8 @@ public class Shooter {
         right = hw.get(DcMotorEx.class, "rightFlyWheel");
         // ... rest of your hardware setup ...
 
-        left.setDirection(DcMotorSimple.Direction.REVERSE);
-        right.setDirection(DcMotorSimple.Direction.FORWARD);
+        left.setDirection(DcMotorSimple.Direction.FORWARD);
+        right.setDirection(DcMotorSimple.Direction.REVERSE);
 
         battery = hw.voltageSensor.iterator().next();
         distToVelo = buildLUT();

@@ -29,7 +29,7 @@ public class TheGas2 extends LinearOpMode {
             /* ================= DRIVE ================= */
 
             double forward = gamepad1.left_stick_y;   // Forward/back
-            double strafe  =  -gamepad1.left_stick_x;   // Left/right
+            double strafe  =  gamepad1.left_stick_x;   // Left/right
             double rotate  = -gamepad1.right_stick_x;  // Turn
             double speed   = 0.3 + 0.7 * gamepad1.right_trigger;
 
@@ -82,14 +82,15 @@ public class TheGas2 extends LinearOpMode {
             /* ================= TUNE SHOOTER ================= */
 
             if (gamepad1.dpadUpWasPressed()) {
-                Robot.SHOOTER_READY_VELOCITY += 10;
+                Robot.SHOOTER_READY_VELOCITY += 100;
             } else if (gamepad1.dpadDownWasPressed()) {
-                Robot.SHOOTER_READY_VELOCITY -= 10;
+                Robot.SHOOTER_READY_VELOCITY -= 100;
             }
 
             if (gamepad1.x){
                 robot.turret.returnToHome();
             }
+
 
             /* ================= STATE TRANSITIONS ================= */
             if (shootFixed) {
