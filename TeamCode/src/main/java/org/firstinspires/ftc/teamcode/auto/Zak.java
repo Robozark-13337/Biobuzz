@@ -78,11 +78,25 @@ public class Zak extends LinearOpMode {
 //                .setTangent(Math.toRadians(315))
                 .afterTime(0, autoActions.fire(1100))
                 .afterTime(5, autoActions.stopShooter())
+                .waitSeconds(5)
+
+                .afterTime(0, autoActions.intake())
+                .setTangent(Math.toRadians(0))
+                .splineTo(new Vector2d(-61,56), Math.toRadians(90))
+                .stopAndAdd(new ParallelAction(
+                        autoActions.intake(),
+                        new SleepAction(2)
+                ))
+                .afterTime(0, autoActions.stopIntake())
 
                 //Park
-                .splineTo(PARK_1, Math.toRadians(45))
-                .splineTo(PARK_2, Math.toRadians(90));
-
+                .splineTo(new Vector2d(-30,50), Math.toRadians(0))
+                .splineToLinearHeading(new Pose2d(new Vector2d(65,10), Math.toRadians(180)), -1)
+                .afterTime(0, autoActions.fire(1100))
+                .afterTime(5, autoActions.stopShooter())
+                .waitSeconds(3)
+                .splineTo(PARK_2, Math.toRadians(0))
+;
 
         /* ---------------- RUN AUTO ---------------- */
 // In THINGALING.java, change your runBlocking to:

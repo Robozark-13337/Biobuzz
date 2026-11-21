@@ -64,7 +64,7 @@ public class TheGas2 extends LinearOpMode {
 //            }
 
             if (robot.limelight != null && robot.limelight.hasValidTarget()) {
-                if (robot.limelight.getTagID() == 20 || robot.limelight.getTagID() == 24){
+                if (robot.limelight.getTagID() == 36 || robot.limelight.getTagID() == 38){
                     robot.flightRecorder.addData("Tag", robot.limelight.getTagID());
                     tagArea = robot.limelight.getTagArea();
                     tagX = robot.limelight.getTagLocationX();
@@ -123,8 +123,8 @@ public class TheGas2 extends LinearOpMode {
                 robot.latch.setPosition(LATCH_OPEN);
             } else if (intakeIn) {
                 robot.shooter.setRaw(0);
+                robot.intake.runServoB();
                 robot.intake.runIntake();
-                robot.intake.runTransfer();
                 robot.latch.setPosition(LATCH_CLOSED);
             } else {
                 robot.shooter.setRaw(0);

@@ -96,8 +96,11 @@ public class MeepMeepTesting {
         myFirstBot.runAction(
                 myFirstBot.getDrive().actionBuilder(startPose)
                         .waitSeconds(3)
-                        .splineTo(PARK_1, Math.toRadians(45))
-                        .splineTo(PARK_2, Math.toRadians(90))
+                        .splineTo(new Vector2d(-61,56), Math.toRadians(90))
+//                        .splineTo(PARK_1, Math.toRadians(45))
+                        .splineTo(new Vector2d(-30,50), Math.toRadians(0))
+                        .splineToLinearHeading(new Pose2d(new Vector2d(60,10), Math.toRadians(180)), -1)
+
                         .build()
         );
 
