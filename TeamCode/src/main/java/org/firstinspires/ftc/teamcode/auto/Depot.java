@@ -4,13 +4,14 @@ import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.*;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.MecanumDriveRR;
 import org.firstinspires.ftc.teamcode.Robot;
 
 import java.lang.Math;
-
+@Disabled
 @Config
 @Autonomous(name = "Depot", group = "Auto")
 public class Depot extends LinearOpMode {

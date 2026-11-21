@@ -24,7 +24,7 @@ public class Shooter {
     public static double kP = 0.003;
     public static double kI = 0.0;
     public static double kD = 0.0;
-    public static double kV = 0.000551;
+    public static double kV = 0.00039;
     public static double VELO_TOL = 20;
     public static double IDLE_VELO = 1100; // Match your LUT sign (negative)
 
