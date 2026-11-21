@@ -124,10 +124,7 @@ public class TheGas2 extends LinearOpMode {
             } else if (intakeIn) {
                 robot.shooter.setRaw(0);
                 robot.intake.runIntake();
-                if (robot.ranger.getDistance() >= .2) {
-                    telemetry.addLine("Transferring");
-                    robot.intake.runTransfer();
-                }
+                robot.intake.runTransfer();
                 robot.latch.setPosition(LATCH_CLOSED);
             } else {
                 robot.shooter.setRaw(0);
